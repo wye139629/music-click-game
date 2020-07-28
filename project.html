@@ -49,6 +49,7 @@
 
     function mousehandler(e) {
       pressed = true
+      console.log(e)
       e.target.classList.add('block-active')
     }
 
@@ -56,7 +57,13 @@
       if (pressed === true){
         e.target.classList.add('block-active')
       }
+      console.log(e)
       console.log(pressed)
+    }
+    function leavehandler(e){
+      if(Array.from(e.target.classList).indexOf('block-active') !== -1){
+        e.target.classList.remove('block-active')
+      }
     }
     function uphandler(e) {
      
@@ -64,20 +71,20 @@
         e.target.classList.remove('block-active')
         pressed = false
       }
-      
     }
 
-    // function remover(e) {
-    //   if (e.propertyName !== 'transition'){
-    //   this.classList.remove('block-active')
-    //   }
-    // }
+    function remover(e) {
+      if (e.propertyName !== 'transition'){
+      this.classList.remove('block-active')
+      }
+    }
 
     blocks.forEach(block => {
       block.addEventListener('mousedown',mousehandler)
       block.addEventListener('mouseup', uphandler)
       block.addEventListener('mouseover',movehandler)
-      // block.addEventListener('transitionend',remover)
+      block.addEventListener('mouseleave',leavehandler)
+      block.addEventListener('transitionend',remover)
     })
   </script>
 </body>
