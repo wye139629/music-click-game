@@ -44,7 +44,41 @@
   </div>
 
   <script>
-    
+    const blocks = document.querySelectorAll('.block')
+    let pressed = false
+
+    function mousehandler(e) {
+      pressed = true
+      e.target.classList.add('block-active')
+    }
+
+    function movehandler(e) {
+      if (pressed === true){
+        e.target.classList.add('block-active')
+      }
+      console.log(pressed)
+    }
+    function uphandler(e) {
+     
+      if (pressed === true){
+        e.target.classList.remove('block-active')
+        pressed = false
+      }
+      
+    }
+
+    // function remover(e) {
+    //   if (e.propertyName !== 'transition'){
+    //   this.classList.remove('block-active')
+    //   }
+    // }
+
+    blocks.forEach(block => {
+      block.addEventListener('mousedown',mousehandler)
+      block.addEventListener('mouseup', uphandler)
+      block.addEventListener('mouseover',movehandler)
+      // block.addEventListener('transitionend',remover)
+    })
   </script>
 </body>
 </html>
