@@ -48,6 +48,7 @@
     let pressed = false
 
     function mousehandler(e) {
+      e.preventDefault()
       pressed = true
       console.log(e)
       e.target.classList.add('block-active')
@@ -73,18 +74,19 @@
       }
     }
 
-    function remover(e) {
-      if (e.propertyName !== 'transition'){
-      this.classList.remove('block-active')
-      }
-    }
+    // function remover(e) {
+    //   console.log(e)
+    //   if (e.propertyName == 'background-color'){
+    //   this.classList.remove('block-active')
+    //   }
+    // }
 
     blocks.forEach(block => {
       block.addEventListener('mousedown',mousehandler)
       block.addEventListener('mouseup', uphandler)
       block.addEventListener('mouseover',movehandler)
       block.addEventListener('mouseleave',leavehandler)
-      block.addEventListener('transitionend',remover)
+      // block.addEventListener('transitionend',remover)
     })
   </script>
 </body>
