@@ -9,66 +9,116 @@
 </head>
 <body>
   <div class="container">
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
+    <div data-name="01" class="block"></div>
+    <div data-name="02" class="block"></div>
+    <div data-name="03" class="block"></div>
+    <div data-name="04" class="block"></div>
+    <div data-name="05" class="block"></div>
+    <div data-name="06" class="block"></div>
+    <div data-name="07" class="block"></div>
+    <div data-name="08" class="block"></div>
+    <div data-name="09" class="block"></div>
+    <div data-name="10" class="block"></div>
+    <div data-name="11" class="block"></div>
+    <div data-name="12" class="block"></div>
+    <div data-name="13" class="block"></div>
+    <div data-name="14" class="block"></div>
+    <div data-name="15" class="block"></div>
+    <div data-name="16" class="block"></div>
+    <div data-name="17" class="block"></div>
+    <div data-name="18" class="block"></div>
+    <div data-name="19" class="block"></div>
+    <div data-name="20" class="block"></div>
+    <div data-name="21" class="block"></div>
+    <div data-name="22" class="block"></div>
+    <div data-name="23" class="block"></div>
+    <div data-name="24" class="block"></div>
+    <div data-name="25" class="block"></div>
+    <div data-name="26" class="block"></div>
+    <div data-name="27" class="block"></div>
+    <div data-name="28" class="block"></div>
+    <div data-name="29" class="block"></div>
+    <div data-name="30" class="block"></div>
+    <div data-name="31" class="block"></div>
+    <div data-name="32" class="block"></div>
   </div>
+
+
+    <audio data-name="01" src="./music/01.wav"></audio>
+    <audio data-name="02" src="./music/02.wav"></audio>
+    <audio data-name="03" src="./music/03.wav"></audio>
+    <audio data-name="04" src="./music/04.wav"></audio>
+    <audio data-name="05" src="./music/05.wav"></audio>
+    <audio data-name="06" src="./music/06.wav"></audio>
+    <audio data-name="07" src="./music/(千).wav"></audio>
+    <audio data-name="08" src="./music/07.wav"></audio>
+    <audio data-name="09" src="./music/08.wav"></audio>
+    <audio data-name="10" src="./music/09.wav"></audio>
+    <audio data-name="11" src="./music/10.wav"></audio>
+    <audio data-name="12" src="./music/11.wav"></audio>
+    <audio data-name="13" src="./music/01.wav"></audio>
+    <audio data-name="14" src="./music/02.wav"></audio>
+    <audio data-name="15" src="./music/03.wav"></audio>
+    <audio data-name="16" src="./music/04.wav"></audio>
+    <audio data-name="17" src="./music/05.wav"></audio>
+    <audio data-name="18" src="./music/06.wav"></audio>
+    <audio data-name="19" src="./music/(千).wav"></audio>
+    <audio data-name="20" src="./music/07.wav"></audio>
+    <audio data-name="21" src="./music/08.wav"></audio>
+    <audio data-name="22" src="./music/09.wav"></audio>
+    <audio data-name="23" src="./music/10.wav"></audio>
+    <audio data-name="24" src="./music/11.wav"></audio>
+    <audio data-name="25" src="./music/01.wav"></audio>
+    <audio data-name="26" src="./music/02.wav"></audio>
+    <audio data-name="27" src="./music/03.wav"></audio>
+    <audio data-name="28" src="./music/04.wav"></audio>
+    <audio data-name="29" src="./music/05.wav"></audio>
+    <audio data-name="30" src="./music/06.wav"></audio>
+    <audio data-name="31" src="./music/(千).wav"></audio>
+    <audio data-name="32" src="./music/07.wav"></audio>
+    
+
 
   <script>
     const blocks = document.querySelectorAll('.block')
     let pressed = false
-
+   
+    
     function mousehandler(e) {
+      let name = e.target.dataset.name
+      const audio = document.querySelector(`audio[data-name="${name}"]`)
       e.preventDefault()
       pressed = true
-      console.log(e)
+      // console.log(e)
       e.target.classList.add('block-active')
+      if(!audio)return
+      audio.currentTime = 0
+      audio.play();
     }
 
     function movehandler(e) {
       if (pressed === true){
         e.target.classList.add('block-active')
       }
-      console.log(e)
-      console.log(pressed)
+      
+      // console.log(e)
+      // console.log(pressed)
     }
     function leavehandler(e){
+      
+
       if(Array.from(e.target.classList).indexOf('block-active') !== -1){
         e.target.classList.remove('block-active')
+        // audio.pause();
       }
     }
     function uphandler(e) {
-     
+      let name = e.target.dataset.name
+      const audio = document.querySelector(`audio[data-name="${name}"]`)
       if (pressed === true){
+        if(!audio)return
+        audio.currentTime = 0
+        audio.play();
         e.target.classList.remove('block-active')
         pressed = false
       }
