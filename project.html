@@ -82,6 +82,10 @@
   <script>
     const blocks = document.querySelectorAll('.block')
     let pressed = false
+    let clickNum = 0
+    let moveNum = 0
+    
+  
    
     
     function mousehandler(e) {
@@ -94,11 +98,36 @@
       if(!audio)return
       audio.currentTime = 0
       audio.play();
+      clickNum = clickNum + 1 
+      if (clickNum == 8){
+      function random_bg_color() {
+        let x = Math.floor(Math.random() * 256);
+        let y = Math.floor(Math.random() * 256);
+        let z = Math.floor(Math.random() * 256);
+        let bgColor = "rgb(" + x + "," + y + "," + z + ")";
+        document.body.style.background = bgColor;
+        }
+        random_bg_color();
+        clickNum = 0
     }
+    }
+
 
     function movehandler(e) {
       if (pressed === true){
         e.target.classList.add('block-active')
+        moveNum = moveNum + 1 
+        if (moveNum == 20){
+          function random_bg_color() {
+            let x = Math.floor(Math.random() * 256);
+            let y = Math.floor(Math.random() * 256);
+            let z = Math.floor(Math.random() * 256);
+            let bgColor = "rgb(" + x + "," + y + "," + z + ")";
+            document.body.style.background = bgColor;
+          }
+          random_bg_color();
+          moveNum = 0
+        }
       }
       
       // console.log(e)
@@ -124,6 +153,7 @@
       }
     }
 
+   
     // function remover(e) {
     //   console.log(e)
     //   if (e.propertyName == 'background-color'){
