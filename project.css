@@ -77,7 +77,11 @@ body{
 }
 .start-section .share-area a:hover{
   animation-name: flash;
+<<<<<<< HEAD
   animation-duration:.3s;
+=======
+  animation-duration:.2s ;
+>>>>>>> 2a015fe92355c26fbf169b2872131015cb3fd72f
 }
 .start{
   flex-direction: column;
