@@ -6,42 +6,64 @@
   <title>Document</title>
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="project.css">
+  <script src="https://kit.fontawesome.com/3c031d0545.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="container">
-    <div data-name="01" class="block"></div>
-    <div data-name="02" class="block"></div>
-    <div data-name="03" class="block"></div>
-    <div data-name="04" class="block"></div>
-    <div data-name="05" class="block"></div>
-    <div data-name="06" class="block"></div>
-    <div data-name="07" class="block"></div>
-    <div data-name="08" class="block"></div>
-    <div data-name="09" class="block"></div>
-    <div data-name="10" class="block"></div>
-    <div data-name="11" class="block"></div>
-    <div data-name="12" class="block"></div>
-    <div data-name="13" class="block"></div>
-    <div data-name="14" class="block"></div>
-    <div data-name="15" class="block"></div>
-    <div data-name="16" class="block"></div>
-    <div data-name="17" class="block"></div>
-    <div data-name="18" class="block"></div>
-    <div data-name="19" class="block"></div>
-    <div data-name="20" class="block"></div>
-    <div data-name="21" class="block"></div>
-    <div data-name="22" class="block"></div>
-    <div data-name="23" class="block"></div>
-    <div data-name="24" class="block"></div>
-    <div data-name="25" class="block"></div>
-    <div data-name="26" class="block"></div>
-    <div data-name="27" class="block"></div>
-    <div data-name="28" class="block"></div>
-    <div data-name="29" class="block"></div>
-    <div data-name="30" class="block"></div>
-    <div data-name="31" class="block"></div>
-    <div data-name="32" class="block"></div>
+  <div class="start-section">
+      <div class="start container">
+          <h1>Mikutap</h1>
+          <div class="start-area">
+              <span>START</span>
+              <span>ABOUT</span>
+              <h4>* Raise the volume and enjoy!</h4>
+          </div>
+          <div class="share-area">
+              <h3>SHARE:</h3>
+              <a href=""><i class="fab fa-twitter"></i></a>
+              <a href=""><i class="fab fa-facebook"></i></a>
+              <a href=""><i class="fab fa-google-plus-g"></i></a>
+          </div>
+      </div>
   </div>
+
+
+  <div class="content-section">
+    <div class="content-container container">
+      <div data-name="01" class="block"></div>
+      <div data-name="02" class="block"></div>
+      <div data-name="03" class="block"></div>
+      <div data-name="04" class="block"></div>
+      <div data-name="05" class="block"></div>
+      <div data-name="06" class="block"></div>
+      <div data-name="07" class="block"></div>
+      <div data-name="08" class="block"></div>
+      <div data-name="09" class="block"></div>
+      <div data-name="10" class="block"></div>
+      <div data-name="11" class="block"></div>
+      <div data-name="12" class="block"></div>
+      <div data-name="13" class="block"></div>
+      <div data-name="14" class="block"></div>
+      <div data-name="15" class="block"></div>
+      <div data-name="16" class="block"></div>
+      <div data-name="17" class="block"></div>
+      <div data-name="18" class="block"></div>
+      <div data-name="19" class="block"></div>
+      <div data-name="20" class="block"></div>
+      <div data-name="21" class="block"></div>
+      <div data-name="22" class="block"></div>
+      <div data-name="23" class="block"></div>
+      <div data-name="24" class="block"></div>
+      <div data-name="25" class="block"></div>
+      <div data-name="26" class="block"></div>
+      <div data-name="27" class="block"></div>
+      <div data-name="28" class="block"></div>
+      <div data-name="29" class="block"></div>
+      <div data-name="30" class="block"></div>
+      <div data-name="31" class="block"></div>
+      <div data-name="32" class="block"></div>
+    </div>
+  </div>
+ 
 
 
     <audio data-name="01" src="./music/01.wav"></audio>
@@ -99,7 +121,7 @@
       audio.currentTime = 0
       audio.play();
       clickNum = clickNum + 1 
-      if (clickNum == 8){
+      if (clickNum == 5){
       function random_bg_color() {
         let x = Math.floor(Math.random() * 256);
         let y = Math.floor(Math.random() * 256);
@@ -114,8 +136,13 @@
 
 
     function movehandler(e) {
+      let name = e.target.dataset.name
+      const audio = document.querySelector(`audio[data-name="${name}"]`)
       if (pressed === true){
         e.target.classList.add('block-active')
+        if(!audio)return
+        audio.currentTime = 0
+        audio.play();
         moveNum = moveNum + 1 
         if (moveNum == 20){
           function random_bg_color() {
