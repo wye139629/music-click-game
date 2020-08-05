@@ -10,13 +10,13 @@
 </head>
 <body>
   <div class="start-section">
-      <div class="start container">
+      <div class="main-start container">
           <h1>Mikutap</h1>
           <div class="start-area">
-              <span>START</span>
-              <span>ABOUT</span>
-              <h4>* Raise the volume and enjoy!</h4>
+              <span class="start">START</span>
+              <span class="about">ABOUT</span>
           </div>
+          <h4>* Raise the volume and enjoy!</h4>
           <div class="share-area">
               <h3>SHARE:</h3>
               <a href=""><i class="fab fa-twitter"></i></a>
@@ -102,11 +102,16 @@
 
 
   <script>
+    const start = document.querySelectorAll('.start-section .start-area .start')
     const blocks = document.querySelectorAll('.block')
     let pressed = false
     let clickNum = 0
     let moveNum = 0
     
+    function starthandler(e) {
+      const startSection = document.querySelector('.start-section')
+      startSection.style.display = 'none'
+    }
   
    
     
@@ -194,6 +199,9 @@
       block.addEventListener('mouseover',movehandler)
       block.addEventListener('mouseleave',leavehandler)
       // block.addEventListener('transitionend',remover)
+    })
+    start.forEach(start =>{
+      start.addEventListener('click',starthandler)
     })
   </script>
 </body>

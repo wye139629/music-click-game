@@ -57,7 +57,7 @@ body{
   margin: auto;
   border-bottom: 1px dotted white;
 }
-.start-section .start-area h4{
+.start-section .start h4{
   font-size: 10px;
   padding: 10px 0;
   letter-spacing: 5px;
@@ -77,13 +77,9 @@ body{
 }
 .start-section .share-area a:hover{
   animation-name: flash;
-<<<<<<< HEAD
   animation-duration:.3s;
-=======
-  animation-duration:.2s ;
->>>>>>> 2a015fe92355c26fbf169b2872131015cb3fd72f
 }
-.start{
+.main-start{
   flex-direction: column;
 }
 .start::before{
