@@ -98,7 +98,7 @@
     <audio data-name="30" src="./music/06.wav"></audio>
     <audio data-name="31" src="./music/(千).wav"></audio>
     <audio data-name="32" src="./music/07.wav"></audio>
-    
+    <audio data-name="bg" src="./music/【伴奏】千本樱【黑うさP初音ミク】.mp3"></audio>
 
 
   <script>
@@ -110,7 +110,9 @@
     
     function starthandler(e) {
       const startSection = document.querySelector('.start-section')
+      const bgaudio = document.querySelector("audio[data-name='bg']")
       startSection.style.display = 'none'
+      bgaudio.play();
     }
   
    
