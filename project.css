@@ -1,6 +1,6 @@
 body{
   background-color: rgb(136, 204, 204);
-  /* position: relative; */
+  position: relative;
 }
 .start-section{
   text-align: center;
@@ -20,7 +20,7 @@ body{
   margin: auto; */
 }
 .start-section h1{
-  font-size: 20px;
+  font-size: 25px;
   letter-spacing: 3px;
   padding-bottom: 15px;
 }
@@ -30,7 +30,7 @@ body{
 }
 .start-section .start-area span{
   padding: 10px 0;
-  font-size: 15px;
+  font-size: 20px;
   letter-spacing: 2px;
   cursor: pointer;
   /* transition: .1s; */
@@ -53,14 +53,14 @@ body{
 .start-section .start-area span::after{
   content: '';
   display: block;
-  width: 60px;
+  width: 75px;
   margin: auto;
   border-bottom: 1px dotted white;
 }
-.start-section .start h4{
-  font-size: 10px;
+.start-section .main-start h4{
+  font-size: 14px;
   padding: 10px 0;
-  letter-spacing: 5px;
+  letter-spacing: 4px;
 }
 .start-section .share-area{
   padding-top: 10px;
@@ -79,7 +79,9 @@ body{
   animation-name: flash;
   animation-duration:.3s;
 }
-.main-start{
+
+.main-start,
+.main-control{
   flex-direction: column;
 }
 .start::before{
@@ -96,10 +98,36 @@ body{
 .container{
   display: flex;
   flex-wrap: wrap;
-  
   /* outline: 1px solid red; */
 }
-
+.control-section{
+  width: 400px;
+  height:120px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: none;
+}
+.main-control{
+  align-items: center;
+  text-align: center;
+  color: white;
+  letter-spacing: 4px;
+}
+.main-control h3{
+  font-size: 16px;
+  padding-bottom: 30px;
+}
+.control-section .switch p{
+  font-size: 14px;
+  padding-bottom: 30px;
+}
+.content-section{
+  display: none;
+}
 .content-container{
   width: 100%;
   height: 100vh;
