@@ -9,8 +9,6 @@
   <script src="https://kit.fontawesome.com/3c031d0545.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-
   <div class="start-section">
       <div class="main-start container">
           <h1>Mikutap</h1>
@@ -28,18 +26,20 @@
       </div>
   </div>
 
-  <div class="control-section">
-    <div class="main-control container">
-      <h3>CLICK & DRAG or PRESS ANY KEY!</h3>
-      <div class="switch">
-        <p>FEEDBACK: <span>ON</span></p>
-        <p>BACKTRACK: <span>ON</span></p>
+  <div class="content-section">
+    <div class="button-group">
+      <div class="go-back">﹤</div>
+      <div class="full-screen">☐</div>
+    </div>
+    <div class="control-container">
+      <div class="main-control container">
+        <h3>CLICK & DRAG or PRESS ANY KEY!</h3>
+        <div class="switch">
+          <p>FEEDBACK: <span>ON</span></p>
+          <p>BACKTRACK: <span>ON</span></p>
+        </div>
       </div>
     </div>
-  </div>
-
-
-  <div class="content-section">
     <div class="content-container container">
       <div data-name="01" class="block"></div>
       <div data-name="02" class="block"></div>
@@ -111,120 +111,6 @@
     <audio data-name="31" src="./music/(千).wav"></audio>
     <audio data-name="32" src="./music/07.wav"></audio>
     <audio data-name="bg" src="./music/【伴奏】千本樱【黑うさP初音ミク】.mp3"></audio>
-
-
-  <script>
-    const start = document.querySelectorAll('.start-section .start-area .start')
-    const startSection = document.querySelector('.start-section')
-    const controlSection = document.querySelector('.control-section')
-    const contentSection = document.querySelector('.content-section')
-    const blocks = document.querySelectorAll('.block')
-    let pressed = false
-    let clickNum = 0
-    let moveNum = 0
-
-    
-    function starthandler(e) {
-      const bgaudio = document.querySelector("audio[data-name='bg']")
-      startSection.style.display = 'none'
-      controlSection.style.display = 'block'
-      contentSection.style.display = "block"
-      bgaudio.play();
-    }
-
-    function mousehandler(e) {
-      let name = e.target.dataset.name
-      const audio = document.querySelector(`audio[data-name="${name}"]`)
-      e.preventDefault()
-      pressed = true
-      // console.log(e)
-      e.target.classList.add('block-active')
-      controlSection.style.display = 'none'
-
-      if(!audio)return
-      audio.currentTime = 0
-      audio.play();
-      clickNum = clickNum + 1 
-      if (clickNum == 5){
-      function random_bg_color() {
-        let x = Math.floor(Math.random() * 256);
-        let y = Math.floor(Math.random() * 256);
-        let z = Math.floor(Math.random() * 256);
-        let bgColor = "rgb(" + x + "," + y + "," + z + ")";
-        document.body.style.background = bgColor;
-        }
-        random_bg_color();
-        clickNum = 0
-      }
-    }
-
-    if (controlSection.style.display = 'none'){
-      function showControl() {
-        controlSection.style.display = 'block'
-      }
-    }
-    function movehandler(e) {
-      let name = e.target.dataset.name
-      const audio = document.querySelector(`audio[data-name="${name}"]`)
-      if (pressed === true){
-        e.target.classList.add('block-active')
-        if(!audio)return
-        audio.currentTime = 0
-        audio.play();
-        moveNum = moveNum + 1 
-        if (moveNum == 20){
-          function random_bg_color() {
-            let x = Math.floor(Math.random() * 256);
-            let y = Math.floor(Math.random() * 256);
-            let z = Math.floor(Math.random() * 256);
-            let bgColor = "rgb(" + x + "," + y + "," + z + ")";
-            document.body.style.background = bgColor;
-          }
-          random_bg_color();
-          moveNum = 0
-        }
-      }
-      
-      // console.log(e)
-      // console.log(pressed)
-    }
-    function leavehandler(e){
-      if(Array.from(e.target.classList).indexOf('block-active') !== -1){
-        e.target.classList.remove('block-active')
-        // audio.pause();
-      }
-    }
-    function uphandler(e) {
-      let name = e.target.dataset.name
-      const audio = document.querySelector(`audio[data-name="${name}"]`)
-      if (pressed === true){
-        if(!audio)return
-        audio.currentTime = 0
-        audio.play();
-        e.target.classList.remove('block-active')
-        pressed = false
-      }
-    }
-
-   
-    // function remover(e) {
-    //   console.log(e)
-    //   if (e.propertyName == 'background-color'){
-    //   this.classList.remove('block-active')
-    //   }
-    // }
-
-    blocks.forEach(block => {
-      block.addEventListener('mousedown',mousehandler)
-      block.addEventListener('mouseup', uphandler)
-      block.addEventListener('mouseover',movehandler)
-      block.addEventListener('mouseleave',leavehandler)
-      // block.addEventListener('transitionend',remover)
-    })
-    start.forEach(start =>{
-      start.addEventListener('click',starthandler)
-    })
-    setInterval(showControl,3000)
-  </script>
+<script src="project.js"></script>
 </body>
 </html>
