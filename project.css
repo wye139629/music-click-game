@@ -115,6 +115,9 @@ body{
   color: white;
   cursor: pointer;
 }
+.close{
+  display: none;
+}
 .button-group div:hover{
   animation: flash .2s;
 }

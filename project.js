@@ -5,8 +5,10 @@ const mainControl = document.querySelector('.control-container')
 const contentSection = document.querySelector('.content-section')
 const fullScreen = document.querySelector('.full-screen')
 const back = document.querySelector('.go-back')
+const buttons = document.querySelector('.button-group')
 const blocks = document.querySelectorAll('.block')
 const bgaudio = document.querySelector("audio[data-name='bg']")
+
 
 let pressed = false
 let clickNum = 0
@@ -49,6 +51,9 @@ function mousehandler(e) {
   audio.play();
   clickNum = clickNum + 1
       
+  
+  mainControl.style.display = 'none'
+  buttons.classList.add('close')
 
   if (clickNum == 5){
   function random_bg_color() {
@@ -71,6 +76,9 @@ function movehandler(e) {
     if(!audio)return
     audio.currentTime = 0
     audio.play();
+
+    mainControl.style.display = 'none'
+
     moveNum = moveNum + 1 
     if (moveNum == 20){
       function random_bg_color() {
@@ -84,6 +92,7 @@ function movehandler(e) {
       moveNum = 0
     }
   }
+   
       
   // console.log(e)
   // console.log(pressed)
@@ -104,8 +113,16 @@ function uphandler(e) {
     audio.play();
     e.target.classList.remove('block-active')
     pressed = false
+    setTimeout(function(){
+      mainControl.style.display = 'block'
+      buttons.classList.remove('close')
+    },2000)
   }
 }
+
+ 
+
+
 
 blocks.forEach(block => {
   block.addEventListener('mousedown',mousehandler)
