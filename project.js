@@ -2,6 +2,8 @@
 const start = document.querySelector('.start-section .start-area .start')
 const startSection = document.querySelector('.start-section')
 const mainControl = document.querySelector('.control-container')
+const feedBack = document.querySelector('.switch p:first-child')
+const backTrack = document.querySelector('.switch p:last-child')
 const contentSection = document.querySelector('.content-section')
 const fullScreen = document.querySelector('.full-screen')
 const back = document.querySelector('.go-back')
@@ -14,6 +16,7 @@ let pressed = false
 let clickNum = 0
 let moveNum = 0
 let full = false
+let switching = false
 
 fullScreen.addEventListener('click',function(){
   if(full){
@@ -38,6 +41,29 @@ start.addEventListener('click',function(){
   bgaudio.play()
 })
 
+feedBack.addEventListener('click',function(){
+  if (switching){
+    this.childNodes[1].textContent = 'ON'
+    switching = false
+  }else{
+    this.childNodes[1].textContent = 'OFF'
+
+    switching =true
+  }
+})
+backTrack.addEventListener('click',function(){
+  if (switching){
+    this.childNodes[1].textContent = 'ON'
+    bgaudio.play()
+    switching = false
+  }else{
+    this.childNodes[1].textContent = 'OFF'
+    bgaudio.pause()
+    switching =true
+  }
+})
+
+
 function mousehandler(e) {
   let name = e.target.dataset.name
   const audio = document.querySelector(`audio[data-name="${name}"]`)
@@ -50,10 +76,12 @@ function mousehandler(e) {
   audio.currentTime = 0
   audio.play();
   clickNum = clickNum + 1
-      
+  if(pressed === true){
+    mainControl.style.display = 'none'
+    buttons.classList.add('close')
+  }    
   
-  mainControl.style.display = 'none'
-  buttons.classList.add('close')
+  
 
   if (clickNum == 5){
   function random_bg_color() {
@@ -116,7 +144,7 @@ function uphandler(e) {
     setTimeout(function(){
       mainControl.style.display = 'block'
       buttons.classList.remove('close')
-    },2000)
+    },3000)
   }
 }
 
