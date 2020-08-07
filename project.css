@@ -214,6 +214,11 @@ display: none;
   font-size: 35px;
   cursor: pointer;
 }
+.about>div{
+  font-size: 18px;
+  letter-spacing: 4px;
+  padding-bottom: 30px;
+}
 .open{
   display: flex;
 }
