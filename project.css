@@ -181,7 +181,6 @@ body{
   /* outline: 1px solid red; */
   width: 12.5%;
   transition: background 0.1s;
-  
 }
 .block-active{
   background-color: rgba(223, 223, 223, 0.5);

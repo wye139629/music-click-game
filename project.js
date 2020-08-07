@@ -17,6 +17,7 @@ let clickNum = 0
 let moveNum = 0
 let full = false
 let switching = false
+let timeout
 
 fullScreen.addEventListener('click',function(){
   if(full){
@@ -38,16 +39,22 @@ back.addEventListener('click',function(e){
 start.addEventListener('click',function(){
   startSection.style.display = 'none'
   mainControl.style.display = 'block'
+  bgaudio.loop = true
   bgaudio.play()
 })
 
 feedBack.addEventListener('click',function(){
   if (switching){
     this.childNodes[1].textContent = 'ON'
+    blocks.forEach((block)=>{
+      block.removeAttribute('style')
+    })
     switching = false
   }else{
     this.childNodes[1].textContent = 'OFF'
-
+    blocks.forEach((block)=>{
+      block.style.backgroundColor='transparent'
+    })
     switching =true
   }
 })
@@ -64,7 +71,7 @@ backTrack.addEventListener('click',function(){
 })
 
 
-function mousehandler(e) {
+function downhandler(e) {
   let name = e.target.dataset.name
   const audio = document.querySelector(`audio[data-name="${name}"]`)
   e.preventDefault()
@@ -140,20 +147,25 @@ function uphandler(e) {
     audio.currentTime = 0
     audio.play();
     e.target.classList.remove('block-active')
-    pressed = false
-    setTimeout(function(){
+    timeout = setTimeout(function(){
       mainControl.style.display = 'block'
       buttons.classList.remove('close')
     },3000)
+    pressed = false
+    
+      // clearTimeout(timeout)
+    
+    
   }
 }
 
  
+  
 
 
 
 blocks.forEach(block => {
-  block.addEventListener('mousedown',mousehandler)
+  block.addEventListener('mousedown',downhandler)
   block.addEventListener('mouseup', uphandler)
   block.addEventListener('mouseover',movehandler)
   block.addEventListener('mouseleave',leavehandler)
