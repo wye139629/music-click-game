@@ -8,6 +8,9 @@ const contentSection = document.querySelector('.content-section')
 const fullScreen = document.querySelector('.full-screen')
 const back = document.querySelector('.go-back')
 const buttons = document.querySelector('.button-group')
+const aboutButton = document.querySelector('.about-button')
+const aboutSection = document.querySelector('.about-section')
+const closeButton = document.querySelector('.close-button span')
 const blocks = document.querySelectorAll('.block')
 const bgaudio = document.querySelector("audio[data-name='bg']")
 
@@ -42,6 +45,16 @@ start.addEventListener('click',function(){
   bgaudio.loop = true
   bgaudio.play()
 })
+
+aboutButton.addEventListener('click',function(){
+  startSection.classList.add('close')
+  aboutSection.classList.add('open')
+})
+closeButton.addEventListener('click',function(){
+  startSection.classList.remove('close')
+  aboutSection.classList.remove('open')
+})
+
 
 feedBack.addEventListener('click',function(){
   if (switching){
