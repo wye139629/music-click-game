@@ -13,6 +13,8 @@ const aboutSection = document.querySelector('.about-section')
 const closeButton = document.querySelector('.close-button span')
 const blocks = document.querySelectorAll('.block')
 const bgaudio = document.querySelector("audio[data-name='bg']")
+const clear = clearInterval()
+
 
 
 let pressed = false
@@ -20,7 +22,9 @@ let clickNum = 0
 let moveNum = 0
 let full = false
 let switching = false
-let timeout
+let interval
+
+
 
 fullScreen.addEventListener('click',function(){
   if(full){
@@ -97,11 +101,9 @@ function downhandler(e) {
   audio.play();
   clickNum = clickNum + 1
   if(pressed === true){
-    mainControl.style.display = 'none'
-    buttons.classList.add('close')
-  }    
-  
-  
+    controlNone()
+  }
+  clearInterval(interval)    
 
   if (clickNum == 5){
   function random_bg_color() {
@@ -126,6 +128,7 @@ function movehandler(e) {
     audio.play();
 
     mainControl.style.display = 'none'
+    buttons.classList.add('close')
 
     moveNum = moveNum + 1 
     if (moveNum == 20){
@@ -139,6 +142,11 @@ function movehandler(e) {
       random_bg_color();
       moveNum = 0
     }
+
+    // if (interval ==="function"){
+    //   interval()
+    // }
+
   }
    
       
@@ -160,21 +168,20 @@ function uphandler(e) {
     audio.currentTime = 0
     audio.play();
     e.target.classList.remove('block-active')
-    timeout = setTimeout(function(){
+    pressed = false
+    interval = setInterval(function() {
       mainControl.style.display = 'block'
       buttons.classList.remove('close')
     },3000)
-    pressed = false
-    
-      // clearTimeout(timeout)
-    
-    
   }
 }
 
- 
-  
-
+const controlNone = function(){
+  mainControl.style.display = 'none'
+  buttons.classList.add('close')
+  // console.log(timeout)
+  // console.log(typeof timeout)
+}
 
 
 blocks.forEach(block => {
