@@ -103,7 +103,8 @@ function downhandler(e) {
   if(pressed === true){
     controlNone()
   }
-  clearInterval(interval)    
+  
+  clearTimeout(interval)    
 
   if (clickNum == 5){
   function random_bg_color() {
@@ -150,7 +151,7 @@ function movehandler(e) {
   }
    
       
-  // console.log(e)
+  console.log(e)
   // console.log(pressed)
 }
 function leavehandler(e){
@@ -169,7 +170,7 @@ function uphandler(e) {
     audio.play();
     e.target.classList.remove('block-active')
     pressed = false
-    interval = setInterval(function() {
+    interval = setTimeout(function() {
       mainControl.style.display = 'block'
       buttons.classList.remove('close')
     },3000)
